@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Courses - Professional Training</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Dental<span>Pro</span></div>
+            <nav>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#cta" class="btn">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-parallax-container">
+            <img src="https://picsum.photos/id/169/1600/1200" alt="Background" class="hero-bg-image" data-speed="0.3">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content" data-speed="0.5">
+                <h1>Master the Art of Dentistry</h1>
+                <p>Join our premium dental courses taught by industry-leading professionals</p>
+                <a href="#courses" class="btn btn-primary">Explore Courses</a>
+            </div>
+            <div class="hero-image" data-speed="0.8">
+                <img src="https://picsum.photos/id/287/1000/1500" alt="Dental Professional" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Courses Slider Section with Horizontal Scroll -->
+    <section id="courses" class="courses-section">
+        <div class="courses-header">
+            <div class="container">
+                <h2 class="section-title">Courses</h2>
+                <p class="section-subtitle">Enhance your skills with our specialized training programs</p>
+            </div>
+        </div>
+        
+        <div class="horizontal-slider-container">
+            <div class="slides-wrapper" id="slidesWrapper">
+                <div class="slides" id="slidesContainer">
+                    <div class="slide" id="slide1">
+                        <div class="slide-inner">
+                            <img class="slide-bg" src="https://picsum.photos/id/287/1920/1080" alt="Advanced Implantology">
+                            <div class="slide-content">
+                                <div class="slide-number">01</div>
+                                <h3>Advanced Implantology</h3>
+                                <p>Master the latest techniques in dental implants and learn from world-renowned practitioners.</p>
+                                <a href="#" class="slide-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" id="slide2">
+                        <div class="slide-inner">
+                            <img class="slide-bg" src="https://picsum.photos/id/683/1920/1080" alt="Cosmetic Dentistry">
+                            <div class="slide-content">
+                                <div class="slide-number">02</div>
+                                <h3>Cosmetic Dentistry</h3>
+                                <p>Transform smiles with cutting-edge procedures and techniques that deliver stunning results.</p>
+                                <a href="#" class="slide-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" id="slide3">
+                        <div class="slide-inner">
+                            <img class="slide-bg" src="https://picsum.photos/id/325/1920/1080" alt="Orthodontic Excellence">
+                            <div class="slide-content">
+                                <div class="slide-number">03</div>
+                                <h3>Orthodontic Excellence</h3>
+                                <p>Advance your skills in modern orthodontics with our comprehensive course covering clear aligners.</p>
+                                <a href="#" class="slide-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" id="slide4">
+                        <div class="slide-inner">
+                            <img class="slide-bg" src="https://picsum.photos/id/628/1920/1080" alt="Pediatric Dental Care">
+                            <div class="slide-content">
+                                <div class="slide-number">04</div>
+                                <h3>Pediatric Dental Care</h3>
+                                <p>Develop specialized techniques for treating young patients with a focus on behavioral management.</p>
+                                <a href="#" class="slide-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" id="slide5">
+                        <div class="slide-inner">
+                            <img class="slide-bg" src="https://picsum.photos/id/424/1920/1080" alt="Digital Dentistry">
+                            <div class="slide-content">
+                                <div class="slide-number">05</div>
+                                <h3>Digital Dentistry</h3>
+                                <p>Embrace cutting-edge technology in modern dental practice with training in CAD/CAM systems.</p>
+                                <a href="#" class="slide-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional empty slide for better spacing at the end -->
+                    <div class="slide-spacing" style="flex-shrink: 0; width: 5vw; pointer-events: none;"></div>
+                </div>
+            </div>
+            
+            <!-- Progress Bar and Navigation -->
+            <div class="slider-progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="slide-counter">
+                    <span class="current">01</span>/<span class="total">05</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our dental courses</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">What qualifications will I receive after completing a course?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, nunc eget faucibus tempor, magna dui feugiat urna, nec fermentum nisi urna vel tellus.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How long are the courses and what is the format?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et dolor non nulla accumsan volutpat. Pellentesque dictum lorem vel risus mollis, id lacinia metus fringilla.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Are there prerequisites for enrolling in advanced courses?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis sem ac justo luctus, id vestibulum libero ullamcorper. Integer varius magna vel ante tincidunt.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you offer payment plans for the courses?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec felis vel neque dignissim fermentum. Donec pulvinar tellus sit amet magna convallis, nec volutpat orci cursus.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I get hands-on practice during the courses?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat libero at ex placerat, eget facilisis magna efficitur. Morbi auctor mauris vel magna elementum.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Are the courses suitable for beginners?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Sed ullamcorper urna vel odio tincidunt, vel gravida elit faucibus. Aenean et metus at lectus.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you provide materials and equipment for practical exercises?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel massa ut nisi bibendum volutpat. Curabitur vitae est vel sapien lacinia tempus sed eu nulla.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Are there continuing education opportunities after course completion?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum, neque sed euismod dignissim, nulla lorem consequat nibh, eget aliquet enim purus ac justo.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I register for a course?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet tortor nec lorem aliquam, id pharetra nisl finibus. Cras imperdiet justo id magna placerat congue.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What support is available during and after the courses?</h3>
+                    <p class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed auctor magna at risus elementum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Portfolio Gallery Section with Scale Animation -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="portfolio-container">
+            <div class="portfolio-header">
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-subtitle">See the smiles we've transformed</p>
+            </div>
+            
+            <div class="portfolio-gallery">
+                <div class="gallery-item" data-index="0">
+                    <div class="gallery-image-container">
+                        <img src="https://picsum.photos/id/342/1200/800" alt="Dental Treatment 1" class="gallery-image">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-number">01</span>
+                        <h3>Cosmetic Transformation</h3>
+                        <p>Complete smile makeover using porcelain veneers and teeth whitening treatments.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="1">
+                    <div class="gallery-image-container">
+                        <img src="https://picsum.photos/id/338/1200/800" alt="Dental Treatment 2" class="gallery-image">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-number">02</span>
+                        <h3>Implant Restoration</h3>
+                        <p>Full-mouth rehabilitation with dental implants and custom ceramic crowns.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="2">
+                    <div class="gallery-image-container">
+                        <img src="https://picsum.photos/id/328/1200/800" alt="Dental Treatment 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-number">03</span>
+                        <h3>Orthodontic Success</h3>
+                        <p>Clear aligner therapy completing a complex case in just 9 months.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-index="3">
+                    <div class="gallery-image-container">
+                        <img src="https://picsum.photos/id/324/1200/800" alt="Dental Treatment 4" class="gallery-image">
+                    </div>
+                    <div class="gallery-content">
+                        <span class="gallery-number">04</span>
+                        <h3>Pediatric Dentistry</h3>
+                        <p>Creating positive dental experiences for our youngest patients with gentle care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Real People, Real Results</h2>
+            <p class="section-subtitle">Hear what our students are saying about their transformational experiences</p>
+            
+            <div class="testimonials-grid">
+                <!-- Featured Video Testimonial on top -->
+                <div class="video-testimonial featured">
+                    <div class="video-wrapper">
+                        <video poster="https://randomuser.me/api/portraits/men/85.jpg" muted playsinline>
+                            <source src="path-to-video.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay">
+                            <button class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="video-like-count">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/85.jpg')"></div>
+                        <div class="user-info">
+                            <h4 class="user-name">gregisenberg <i class="fas fa-check-circle"></i></h4>
+                            <p class="user-role">CEO & Dental Specialist</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container for the bottom two testimonials -->
+                <div class="non-featured-container">
+                    <!-- Video Testimonial 1 -->
+                    <div class="video-testimonial">
+                        <div class="video-wrapper">
+                            <video poster="https://randomuser.me/api/portraits/men/32.jpg" muted playsinline>
+                                <source src="path-to-video.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="video-like-count">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg')"></div>
+                            <div class="user-info">
+                                <h4 class="user-name">alexbrogan_dds <i class="fas fa-check-circle"></i></h4>
+                                <p class="user-role">Dental Surgeon @ X</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Testimonial 2 -->
+                    <div class="video-testimonial">
+                        <div class="video-wrapper">
+                            <video poster="https://randomuser.me/api/portraits/women/45.jpg" muted playsinline>
+                                <source src="path-to-video.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="video-like-count">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="user-profile">
+                            <div class="user-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/45.jpg')"></div>
+                            <div class="user-info">
+                                <h4 class="user-name">emmaberman_ <i class="fas fa-check-circle"></i></h4>
+                                <p class="user-role">22k followers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-cta">
+                <a href="#" class="btn btn-outline">See more reviews <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pricing/Packages Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="pricing-bg-shape"></div>
+        <div class="container">
+            <h2 class="section-title">Course Packages</h2>
+            <p class="section-subtitle">Flexible options to fit your learning goals and schedule</p>
+            
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Essential</h3>
+                        <div class="pricing-amount">
+                            <span class="currency">$</span>
+                            <span class="amount">1,299</span>
+                        </div>
+                        <p class="pricing-period">One-time payment</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Online course access for 6 months</li>
+                            <li>25+ hours of video content</li>
+                            <li>Digital course materials</li>
+                            <li>Certificate of completion</li>
+                            <li>Community forum access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn btn-outline">Choose Plan</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="pricing-amount">
+                            <span class="currency">$</span>
+                            <span class="amount">2,499</span>
+                        </div>
+                        <p class="pricing-period">One-time payment</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Everything in Essential</li>
+                            <li>2-day in-person workshop</li>
+                            <li>Hands-on practice with materials</li>
+                            <li>1-on-1 case review session</li>
+                            <li>12 months of course access</li>
+                            <li>Advanced certificate</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Mastery</h3>
+                        <div class="pricing-amount">
+                            <span class="currency">$</span>
+                            <span class="amount">4,999</span>
+                        </div>
+                        <p class="pricing-period">One-time payment</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Everything in Professional</li>
+                            <li>5-day intensive residency</li>
+                            <li>Perform live patient procedures</li>
+                            <li>Personal mentorship (6 months)</li>
+                            <li>Marketing materials for your practice</li>
+                            <li>Lifetime course access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn btn-outline">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-guarantee">
+                <div class="guarantee-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="guarantee-content">
+                    <h4>100% Satisfaction Guarantee</h4>
+                    <p>If you're not completely satisfied within the first 14 days, we'll provide a full refund.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 7. Call-to-Action with Subscription Form -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Dental Practice?</h2>
+                    <p>Join thousands of successful dental professionals who have elevated their skills and practice with our courses.</p>
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Expert Instructors</h4>
+                                <p>Learn from leading dentists with decades of experience</p>
+                            </div>
+                        </div>
+                        <div class="cta-feature">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Hands-On Training</h4>
+                                <p>Practice with state-of-the-art materials and technology</p>
+                            </div>
+                        </div>
+                        <div class="cta-feature">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Immediate Results</h4>
+                                <p>Implement what you learn immediately in your practice</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-form-container">
+                    <div class="cta-form">
+                        <h3>Get Course Information</h3>
+                        <p>Fill out this form to receive a detailed course catalog and a personal consultation.</p>
+                        <form action="#" method="POST" class="subscribe-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <select required>
+                                    <option value="" disabled selected>Course of Interest</option>
+                                    <option value="implantology">Advanced Implantology</option>
+                                    <option value="cosmetic">Cosmetic Dentistry</option>
+                                    <option value="orthodontic">Orthodontic Excellence</option>
+                                    <option value="pediatric">Pediatric Dental Care</option>
+                                    <option value="digital">Digital Dentistry</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Request Information</button>
+                        </form>
+                        <p class="form-disclaimer">By submitting this form, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <div class="logo">Dental<span>Pro</span></div>
+                    <p>Premium dental continuing education for professionals who want to excel in their field.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fas fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Dental Avenue, Suite 100<br>New York, NY 10001</p>
+                    <p><i class="fas fa-phone"></i> (800) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@dentalpro-edu.com</p>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest dental education news and special offers.</p>
+                    <form class="footer-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 DentalPro Education. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Scripts -->
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>
