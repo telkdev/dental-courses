@@ -5,11 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Morphic Hero Testimonial Block (ESM)
 // Requires GSAP and ScrollTrigger loaded globally
 
-const MORPH_PATHS = [
-  "M200,60Q320,100,300,200Q280,300,200,340Q120,300,100,200Q80,100,200,60Z",
-  "M200,80Q320,160,260,240Q200,320,120,260Q80,160,200,80Z",
-  "M200,70Q330,130,270,220Q200,310,110,220Q70,130,200,70Z"
-];
+// Removed path morphing; new visual uses static SVG with subtle float & sparkle.
 const VISIBILITY_THRESHOLD = 0.35;
 const POINTER_MAGNET_DISTANCE = 160;
 const POINTER_MAGNET_STRENGTH = 0.25;
@@ -24,10 +20,9 @@ class MorphicTestimonial {
     this.section = section;
     this.quote = section.querySelector('.morphic-quote');
     this.title = section.querySelector('.morphic-title');
-    this.blob = section.querySelector('#blob path');
-    this.blobSVG = section.querySelector('#blob');
-    this.particlesSVG = section.querySelector('.morphic-particles');
-    this.confetti = section.querySelector('.morphic-confetti');
+  this.visual = section.querySelector('.tooth-orb');
+  this.sparkLayer = section.querySelector('.spark-layer');
+  this.sparks = this.sparkLayer ? Array.from(this.sparkLayer.querySelectorAll('.spark')) : [];
     this.wordSpans = [];
     this.morphTl = null;
     this.waveTl = null;
@@ -35,6 +30,16 @@ class MorphicTestimonial {
     this.active = false;
     this.revealed = false;
     this.pointerActive = false;
+    this._pointerPos = { x: 0, y: 0 };
+    this._targetPos = { x: 0, y: 0 };
+    this._vel = { x: 0, y: 0 };
+    this._lastTime = null;
+    this._rafId = null;
+    this._idleTimer = null;
+    this._idle = true;
+    this._lastSweep = 0;
+    this._sweepCooldown = 380; // ms
+    this._maxTilt = 6; // deg
     this._setup();
   }
   _setup() {
@@ -56,13 +61,7 @@ class MorphicTestimonial {
     });
     this.quote.setAttribute('aria-live', 'polite');
     // Prepare morph timeline
-    this.blob.setAttribute('d', MORPH_PATHS[0]);
-    this.morphTl = gsap.timeline({ paused: true })
-      .to(this.blob, { duration: 1.2, morphSVG: MORPH_PATHS[1], ease: 'sine.inOut' })
-      .to(this.blob, { duration: 1.2, morphSVG: MORPH_PATHS[2], ease: 'sine.inOut' })
-      .to(this.blob, { duration: 1.2, morphSVG: MORPH_PATHS[0], ease: 'sine.inOut' });
-    // Particle drift
-    this._driftParticles();
+    this._sparkle();
     // IntersectionObserver for activation
     this._observer = new IntersectionObserver(entries => {
       const entry = entries[0];
@@ -73,18 +72,10 @@ class MorphicTestimonial {
       }
     }, { threshold: [0.15, VISIBILITY_THRESHOLD, 0.6] });
     this._observer.observe(this.section);
+    // In case it's already visible (e.g., user reloads mid-page or small viewport)
+    this._maybeAutoActivate();
     // ScrollTrigger for morph scrub
-    ScrollTrigger.create({
-      trigger: this.section,
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 0.6,
-      onUpdate: self => {
-        if (!REDUCED_MOTION_MODE && this.morphTl) {
-          this.morphTl.progress(self.progress);
-        }
-      }
-    });
+    ScrollTrigger.create({ trigger: this.section, start: 'top bottom', end: 'bottom top', scrub: 0.6 });
     // Expose API
     this.section.dataset.morphic = 'initialized';
     window.morphicHero = this;
@@ -111,60 +102,29 @@ class MorphicTestimonial {
       this._startWave();
     }
     // Start morph loop
-    if (this.morphTl) this.morphTl.play();
-    // Pointer parallax
     this._attachPointer();
+    this._startInteractiveLoop();
   }
   deactivate() {
     if (!this.active) return;
     this.active = false;
     this.section.dispatchEvent(new CustomEvent('morphic:leave'));
     if (REDUCED_MOTION_MODE) return;
-    if (this.morphTl) this.morphTl.pause();
     this._detachPointer();
     this._stopWave();
-    gsap.to(this.blobSVG, { x: 0, y: 0, duration: 0.5, ease: 'power2.out' });
-    gsap.to(this.particlesSVG, { x: 0, y: 0, duration: 0.5, ease: 'power2.out' });
+    if (this.visual) gsap.to(this.visual, { x:0, y:0, duration:0.5, ease:'power2.out'});
   }
-  _driftParticles() {
-    if (!this.particlesSVG) return;
-    Array.from(this.particlesSVG.children).forEach((circle, i) => {
-      gsap.to(circle, {
-        x: `+=${Math.random()*PARTICLE_DRIFT_AMT-8}`,
-        y: `+=${Math.random()*PARTICLE_DRIFT_AMT-8}`,
-        duration: 2.5 + Math.random()*2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: i*0.2
-      });
+  _confettiBurst() { /* removed */ }
+  _sparkle() {
+    if (!this.sparks.length || REDUCED_MOTION_MODE) return;
+    this.sparks.forEach((spark, i) => {
+      const baseScale = 0.4 + Math.random()*0.6;
+      gsap.set(spark, { scale: baseScale });
+      const tl = gsap.timeline({ repeat:-1, repeatDelay: 2+Math.random()*2 });
+      tl.to(spark, { opacity:1, duration:0.35, ease:'sine.out' })
+        .to(spark, { scale: baseScale*1.8, duration:0.9, ease:'sine.inOut' }, 0)
+        .to(spark, { opacity:0, duration:0.5, ease:'sine.in' }, '>-0.2');
     });
-  }
-  _confettiBurst() {
-    if (!this.confetti) return;
-    this.confetti.innerHTML = '';
-    for (let i=0; i<CONFETTI_COUNT; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'morphic-confetti-dot';
-      dot.style.position = 'absolute';
-      dot.style.width = dot.style.height = `${6+Math.random()*6}px`;
-      dot.style.borderRadius = '50%';
-      dot.style.background = `linear-gradient(90deg,#00A0E3,#70D5FF)`;
-      dot.style.left = '170px';
-      dot.style.top = '170px';
-      this.confetti.appendChild(dot);
-      const angle = Math.random()*2*Math.PI;
-      const dist = 60+Math.random()*60;
-      gsap.to(dot, {
-        x: Math.cos(angle)*dist,
-        y: Math.sin(angle)*dist,
-        opacity: 0,
-        scale: 0.7+Math.random()*0.7,
-        duration: 1.2+Math.random()*0.5,
-        ease: 'power2.out',
-        onComplete: () => dot.remove()
-      });
-    }
   }
   _startWave() {
     if (REDUCED_MOTION_MODE) return;
@@ -188,11 +148,77 @@ class MorphicTestimonial {
       span.style.textShadow = '';
     });
   }
+  _startInteractiveLoop() {
+    if (REDUCED_MOTION_MODE) return; // respect user preference
+    if (this._rafId) return;
+    const tooth = this.section.querySelector('.tooth-simple, .tooth2d-outline, .tooth-shape');
+    const highlight = this.section.querySelector('.tooth2d-highlight, .tooth-shine');
+    // prepare highlight sweep stroke dash if path
+    if (highlight && !highlight._dashSetup) {
+      try {
+        const len = highlight.getTotalLength();
+        highlight.style.strokeDasharray = len;
+        highlight.style.strokeDashoffset = len * 0.9;
+        highlight._pathLength = len;
+        highlight._dashSetup = true;
+      } catch(e) { /* not a path */ }
+    }
+    if (!tooth) return;
+    const lerp = (a,b,t)=> a + (b-a)*t;
+  // quick setters to avoid spawning many tweens
+  const quickOpacity = highlight ? gsap.quickTo(highlight, 'opacity', { duration:0.25, ease:'sine.out' }) : null;
+    const update = (ts) => {
+      if (!this.active) { this._rafId = null; return; }
+      if (!this._lastTime) this._lastTime = ts;
+      const dt = (ts - this._lastTime) / 1000; // seconds
+      this._lastTime = ts;
+      // smooth follow toward target
+      this._pointerPos.x = lerp(this._pointerPos.x, this._targetPos.x, 0.12);
+      this._pointerPos.y = lerp(this._pointerPos.y, this._targetPos.y, 0.12);
+      // velocity (approx)
+      const vx = (this._targetPos.x - this._pointerPos.x) / (dt || 0.016);
+      const vy = (this._targetPos.y - this._pointerPos.y) / (dt || 0.016);
+      this._vel.x = lerp(this._vel.x, vx, 0.25);
+      this._vel.y = lerp(this._vel.y, vy, 0.25);
+      const speed = Math.min(1, Math.hypot(this._vel.x, this._vel.y) / 600);
+      // Map to transforms
+  const moveX = this._pointerPos.x * 0.4;
+  const moveY = this._pointerPos.y * 0.4;
+  // subtle tilt based on normalized pointer
+  const tiltX = (this._pointerPos.y / 100) * -this._maxTilt; // invert so upward is positive rotationX
+  const tiltY = (this._pointerPos.x / 100) * this._maxTilt;
+      const scale = 1 + speed * 0.03; // slight pop when moving faster
+      gsap.set(tooth, { x: moveX, y: moveY, scale, rotateX: tiltX, rotateY: tiltY, transformPerspective:800 });
+      if (highlight) {
+        if (quickOpacity) quickOpacity(0.55 + speed*0.35);
+        // velocity-triggered sweep
+        if (speed > 0.55) {
+          const now = performance.now();
+            if (now - this._lastSweep > this._sweepCooldown && highlight._pathLength) {
+              this._lastSweep = now;
+              gsap.fromTo(highlight,
+                { strokeDashoffset: highlight._pathLength },
+                { strokeDashoffset: highlight._pathLength * 0.2, duration: 0.5, ease: 'power2.out' }
+              );
+              gsap.to(highlight, { strokeDashoffset: highlight._pathLength * 0.9, duration: 0.6, ease: 'sine.in', delay: 0.5 });
+            }
+        }
+      }
+      // idle drift when no movement
+      if (this._idle && !this.pointerActive) {
+        const t = ts * 0.0004;
+        gsap.set(tooth, { y: Math.sin(t)*8 });
+      }
+      this._rafId = requestAnimationFrame(update);
+    };
+    this._rafId = requestAnimationFrame(update);
+  }
   _attachPointer() {
     if (this.pointerActive) return;
     this.pointerActive = true;
     this._pointerHandler = e => {
-      const rect = this.blobSVG.getBoundingClientRect();
+      if (!this.visual) return;
+      const rect = this.visual.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const cx = rect.width/2, cy = rect.height/2;
@@ -208,21 +234,38 @@ class MorphicTestimonial {
       } else {
         mx = dx*0.08; my = dy*0.08;
       }
-      gsap.to(this.blobSVG, { x: mx, y: my, duration: 0.4, ease: 'power2.out' });
-      gsap.to(this.particlesSVG, { x: mx*0.5, y: my*0.5, duration: 0.6, ease: 'power2.out' });
+      this._idle = false;
+      clearTimeout(this._idleTimer);
+      this._targetPos.x = mx;
+      this._targetPos.y = my;
+      this._idleTimer = setTimeout(()=> { this._idle = true; }, 1800);
     };
-    this.blobSVG.parentElement.addEventListener('pointermove', this._pointerHandler);
+    this.visual.addEventListener('pointermove', this._pointerHandler);
+    this._pointerLeave = () => {
+      this._targetPos.x = 0; this._targetPos.y = 0;
+      this._idle = true;
+    };
+    this.visual.addEventListener('pointerleave', this._pointerLeave);
   }
   _detachPointer() {
     if (!this.pointerActive) return;
     this.pointerActive = false;
-    this.blobSVG.parentElement.removeEventListener('pointermove', this._pointerHandler);
+    if (this.visual) {
+      this.visual.removeEventListener('pointermove', this._pointerHandler);
+      this.visual.removeEventListener('pointerleave', this._pointerLeave);
+    }
+  }
+  _maybeAutoActivate() {
+    const rect = this.section.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const visible = rect.top < vh * (1 - (1 - VISIBILITY_THRESHOLD)) && rect.bottom > 0;
+    if (visible) this.activate();
   }
   destroy() {
     if (this._observer) this._observer.disconnect();
     ScrollTrigger.getAll().forEach(t => t.kill());
-    if (this.morphTl) this.morphTl.kill();
     if (this.waveTl) this.waveTl.kill();
+    if (this._rafId) cancelAnimationFrame(this._rafId);
     this._detachPointer();
     this.section.dataset.morphic = '';
   }

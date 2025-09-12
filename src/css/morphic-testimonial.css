@@ -135,45 +135,38 @@
   justify-content: center;
   padding: 32px 32px 32px 0;
 }
-.morphic-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 340px;
-  height: 340px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  box-shadow: var(--morphic-glow);
-  z-index: 0;
-  pointer-events: none;
+/* New Tooth Orb Visual */
+.tooth-orb { position: relative; width: 360px; height: 360px; display:flex; align-items:center; justify-content:center; perspective: 900px; }
+.tooth-core { position:relative; width:100%; height:100%; }
+.tooth-shape { width:100%; height:100%; overflow:visible; }
+.tooth-outline { stroke: rgba(255,255,255,0.65); stroke-width:1.6; paint-order: stroke fill; }
+.tooth-dentin { filter: drop-shadow(0 2px 4px rgba(0,160,227,0.15)); }
+.tooth-shape { filter: drop-shadow(0 8px 28px rgba(0,160,227,0.18)) drop-shadow(0 0 42px rgba(112,213,255,0.45)); }
+.tooth-shine { mix-blend-mode: screen; }
+/* Simplified 2D tooth styles */
+.tooth-simple { width:100%; height:100%; }
+.tooth2d-outline { transition: filter .4s ease; }
+.tooth2d-outline:hover { filter: brightness(1.05) drop-shadow(0 4px 10px rgba(0,160,227,0.25)); }
+.tooth2d-highlight { mix-blend-mode: screen; }
+/* Fallback animations only when JS disabled (progressive enhancement) */
+@media (prefers-reduced-motion: no-preference) {
+  .js-disabled .tooth2d-highlight { animation: toothHighlightPulse 6s ease-in-out infinite; }
+  .js-disabled .tooth-simple { animation: toothFloat 10s ease-in-out infinite; }
+  @keyframes toothHighlightPulse { 0%,100% { opacity:.55;} 50% { opacity:.85;} }
+  @keyframes toothFloat { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-10px);} }
 }
-.morphic-blob {
-  position: relative;
-  z-index: 1;
-  width: 340px;
-  height: 340px;
-  filter: drop-shadow(0 0 48px #3EC6FF88) drop-shadow(0 8px 32px #18A8E644);
-  transition: filter 0.2s;
-  will-change: filter, transform;
-  background: none;
-}
-.morphic-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 340px;
-  height: 340px;
-  z-index: 2;
-  pointer-events: none;
-}
-.morphic-confetti {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 340px;
-  height: 340px;
-  z-index: 3;
-  pointer-events: none;
+.spark-layer { position:absolute; inset:0; pointer-events:none; }
+.spark { position:absolute; width:10px; height:10px; background:radial-gradient(circle at 30% 30%,#fff,rgba(255,255,255,0) 70%); border-radius:50%; opacity:0; }
+.spark:after { content:''; position:absolute; inset:-4px; background:radial-gradient(circle,#6ad3ff55,#00a0e300); filter:blur(6px); border-radius:50%; }
+/* Spark positions */
+.spark.s1 { top:12%; left:48%; }
+.spark.s2 { top:28%; left:12%; }
+.spark.s3 { top:66%; left:22%; }
+.spark.s4 { top:70%; left:70%; }
+.spark.s5 { top:36%; left:78%; }
+
+/* JS now handles motion; remove continuous CSS animations except fallback above */
+@media (prefers-reduced-motion: reduce) { .tooth-outline, .tooth-shine, .tooth2d-highlight { animation:none !important; }
 }
 @media (max-width: 900px) {
   .morphic-grid {
@@ -197,8 +190,5 @@
   .morphic-quote {
     font-size: 1rem;
   }
-  .morphic-glow, .morphic-blob, .morphic-particles, .morphic-confetti {
-    width: 220px;
-    height: 220px;
-  }
+  .tooth-orb { width:240px; height:240px; }
 }
