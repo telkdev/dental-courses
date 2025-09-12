@@ -1,0 +1,204 @@
+/* Morphic Hero Testimonial Block Styles */
+.mosaic-glass {
+  --morphic-bg: rgba(255,255,255,0.18);
+  --morphic-blur: 18px;
+  --morphic-border: 1.5px solid rgba(0,160,227,0.12);
+  --morphic-radius: 32px;
+  --morphic-shadow: 0 8px 32px rgba(0,160,227,0.08);
+  --morphic-gradient1: #00A0E3;
+  --morphic-gradient2: #70D5FF;
+  --morphic-glow: 0 0 80px 30px #70D5FF;
+  --morphic-title-size: 2.2rem;
+  --morphic-quote-size: 1.15rem;
+  --morphic-badge-size: 0.9rem;
+  --morphic-cta-radius: 24px;
+  --morphic-cta-shadow: 0 2px 8px rgba(0,160,227,0.10);
+  --morphic-cta-primary: #00A0E3;
+  --morphic-cta-secondary: #fff;
+  --morphic-cta-secondary-text: #00A0E3;
+  --morphic-cta-secondary-border: 1.5px solid #00A0E3;
+}
+.morphic-testimonial {
+  width: 100%;
+  margin: 64px 0;
+  border-radius: var(--morphic-radius);
+  background: var(--morphic-bg);
+  box-shadow: var(--morphic-shadow);
+  backdrop-filter: blur(var(--morphic-blur));
+  border: var(--morphic-border);
+  overflow: hidden;
+  position: relative;
+}
+.morphic-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.morphic-content {
+  flex: 1 1 340px;
+  padding: 48px 40px 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 280px;
+}
+.morphic-badge {
+  font-size: var(--morphic-badge-size);
+  color: var(--morphic-gradient1);
+  background: linear-gradient(90deg, #eaf6fb 0%, #f7fbff 100%);
+  border-radius: 12px;
+  padding: 6px 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  display: inline-block;
+  letter-spacing: 0.04em;
+}
+.morphic-title {
+  font-size: var(--morphic-title-size);
+  font-weight: 700;
+  color: #253858;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+.morphic-quote {
+  font-size: var(--morphic-quote-size);
+  color: #253858;
+  margin-bottom: 28px;
+  line-height: 1.6;
+  min-height: 60px;
+}
+.morphic-byline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.morphic-initials {
+  background: linear-gradient(90deg, var(--morphic-gradient1), var(--morphic-gradient2));
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,160,227,0.10);
+}
+.morphic-name {
+  font-weight: 600;
+  color: #253858;
+  font-size: 1rem;
+}
+.morphic-role {
+  color: var(--morphic-gradient1);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.morphic-ctas {
+  display: flex;
+  gap: 16px;
+}
+.morphic-cta {
+  border-radius: var(--morphic-cta-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 32px;
+  box-shadow: var(--morphic-cta-shadow);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  border: none;
+}
+.morphic-cta-primary {
+  background: var(--morphic-cta-primary);
+  color: #fff;
+}
+.morphic-cta-primary:focus {
+  box-shadow: 0 0 0 2px #70D5FF;
+}
+.morphic-cta-secondary {
+  background: var(--morphic-cta-secondary);
+  color: var(--morphic-cta-secondary-text);
+  border: var(--morphic-cta-secondary-border);
+}
+.morphic-cta-secondary:focus {
+  box-shadow: 0 0 0 2px #00A0E3;
+}
+.morphic-visual {
+  flex: 1 1 340px;
+  min-width: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px 32px 0;
+}
+.morphic-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: var(--morphic-glow);
+  z-index: 0;
+  pointer-events: none;
+}
+.morphic-blob {
+  position: relative;
+  z-index: 1;
+  width: 340px;
+  height: 340px;
+  filter: drop-shadow(0 0 48px #3EC6FF88) drop-shadow(0 8px 32px #18A8E644);
+  transition: filter 0.2s;
+  will-change: filter, transform;
+  background: none;
+}
+.morphic-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 340px;
+  z-index: 2;
+  pointer-events: none;
+}
+.morphic-confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 340px;
+  z-index: 3;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .morphic-grid {
+    flex-direction: column;
+  }
+  .morphic-content, .morphic-visual {
+    min-width: 0;
+    padding: 32px;
+  }
+  .morphic-visual {
+    padding-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .morphic-content, .morphic-visual {
+    padding: 18px;
+  }
+  .morphic-title {
+    font-size: 1.3rem;
+  }
+  .morphic-quote {
+    font-size: 1rem;
+  }
+  .morphic-glow, .morphic-blob, .morphic-particles, .morphic-confetti {
+    width: 220px;
+    height: 220px;
+  }
+}

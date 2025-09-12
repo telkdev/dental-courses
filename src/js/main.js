@@ -860,3 +860,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, i * 10); // додаємо кожен блок послідовно
   });
 });
+
+

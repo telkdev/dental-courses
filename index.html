@@ -199,6 +199,51 @@
         </div>
     </section>
 
+    <!-- Morphic Hero Testimonial Block -->
+    <link rel="stylesheet" href="src/css/morphic-testimonial.css">
+    <section id="morphic-testimonial" class="morphic-testimonial mosaic-glass">
+      <div class="morphic-grid">
+        <div class="morphic-content">
+          <div class="morphic-badge">Trusted by teams worldwide</div>
+          <h1 class="morphic-title">“Transform your dental career with confidence.”</h1>
+          <p class="morphic-quote" aria-live="polite">
+            The hands-on training and mentorship gave me the skills to tackle complex cases and grow my practice. I recommend it to every dentist who wants to level up.
+          </p>
+          <div class="morphic-byline">
+            <span class="morphic-initials">SJ</span>
+            <span class="morphic-name">Dr. Sarah Johnson</span>
+            <span class="morphic-role">Implantology Graduate</span>
+          </div>
+          <div class="morphic-ctas">
+            <button class="morphic-cta morphic-cta-primary">Get Started</button>
+            <button class="morphic-cta morphic-cta-secondary">See More Success Stories</button>
+          </div>
+        </div>
+        <div class="morphic-visual">
+          <div class="morphic-glow"></div>
+          <svg id="blob" class="morphic-blob" viewBox="0 0 400 400" width="400" height="400" aria-hidden="true">
+            <path id="blob-path-1" d="M200,60Q320,100,300,200Q280,300,200,340Q120,300,100,200Q80,100,200,60Z" fill="url(#morphic-gradient)"/>
+            <path id="blob-path-2" d="M200,80Q320,160,260,240Q200,320,120,260Q80,160,200,80Z" fill="url(#morphic-gradient)" style="display:none;"/>
+            <path id="blob-path-3" d="M200,70Q330,130,270,220Q200,310,110,220Q70,130,200,70Z" fill="url(#morphic-gradient)" style="display:none;"/>
+            <defs>
+              <linearGradient id="morphic-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00A0E3"/>
+                <stop offset="100%" stop-color="#70D5FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg class="morphic-particles" width="400" height="400" aria-hidden="true">
+            <circle cx="80" cy="120" r="8" fill="#70D5FF"/>
+            <circle cx="320" cy="90" r="6" fill="#00A0E3"/>
+            <circle cx="340" cy="300" r="5" fill="#005DAF"/>
+            <circle cx="60" cy="280" r="7" fill="#00A0E3"/>
+            <circle cx="200" cy="370" r="4" fill="#70D5FF"/>
+          </svg>
+          <div class="morphic-confetti" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- 4. Portfolio Gallery Section with Scale Animation -->
     <section id="portfolio" class="portfolio-section">
         <div class="portfolio-container">
@@ -581,5 +626,6 @@
     
     <!-- Scripts -->
     <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/morphic-testimonial.js"></script>
 </body>
 </html>
