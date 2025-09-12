@@ -71,6 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Sync ScrollTrigger with Lenis
   lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.to('.hero-section', {
+    yPercent: 100,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.courses-section',
+      start: 'top bottom',
+      end: 'top top',
+      scrub: true,
+    }
+  })
   
   // Initial loading animation - optimized to prevent jumping
   const tl = gsap.timeline();
@@ -140,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'none',
       force3D: true
     }, 0);
+
+    
+  const coursesSection = document.querySelector('.courses-section');
     
   // Create a smooth exit animation for the hero section as courses section appears
   const heroExitAnimation = gsap.timeline({
@@ -226,7 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   // Courses Section - Horizontal Smooth Scroll Gallery Implementation
-  const coursesSection = document.querySelector('.courses-section');
   const slidesWrapper = document.querySelector('#slidesWrapper');
   const slidesContainer = document.querySelector('#slidesContainer');
   const slides = document.querySelectorAll('.slide');
@@ -300,11 +313,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const horizontalScrollTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.horizontal-slider-container',
-      pin: true,
-      pinSpacing: true,
       start: "top top",
-      end: "+=2000", // Adjust this value to control scroll distance
-      scrub: 1,
+      end: "+=2100", // Adjust this value to control scroll distance
+      scrub: 1,pin: true, // 👈 фіксує wrapper на час анімації
+    anticipatePin: 1, // робить плавніше
+    pinType: "transform",
       onEnter: () => {
         // Show the progress bar and counter
         gsap.to('.slider-progress-container', {
@@ -822,5 +835,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
+  });
+
+  const blocks = gsap.utils.toArray(".stacked-block");
+  const overlap = 40; // should depends on screen sizes
+
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".stacked-section",
+      start: "top top",
+      end: "+=" + (blocks.length * 400), // довжина скролу = кількість блоків
+      scrub: true,
+      pin: true,
+    }
+  });
+
+  blocks.forEach((block, i) => {
+    t2.to(block, {
+      opacity: 1,
+      x: overlap * i,   // should depends on screen sizes and blocks count
+      y: overlap * i,   // should depends on screen sizes and blocks count
+      duration: 1,
+      ease: "power2.out"
+    }, i * 10); // додаємо кожен блок послідовно
   });
 });
