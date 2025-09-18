@@ -1,0 +1,60 @@
+<section id="morphic-testimonial" class="morphic-testimonial mosaic-glass">
+  <div class="morphic-grid">
+    <!-- Left Column: Testimonial Content -->
+    <div class="morphic-content">
+      <div class="morphic-badge">Trusted by teams worldwide</div>
+      <h1 class="morphic-title">“Transform your dental career with confidence.”</h1>
+      <p class="morphic-quote" aria-live="polite">
+        The hands-on training and mentorship gave me the skills to tackle complex cases and grow my practice. I recommend it to every dentist who wants to level up.
+      </p>
+      <div class="morphic-byline">
+        <span class="morphic-initials">SJ</span>
+        <span class="morphic-name">Dr. Sarah Johnson</span>
+        <span class="morphic-role">Implantology Graduate</span>
+      </div>
+      <div class="morphic-ctas">
+        <button class="morphic-cta morphic-cta-primary">Get Started</button>
+        <button class="morphic-cta morphic-cta-secondary">See More Success Stories</button>
+      </div>
+    </div>
+    <!-- Right Column: SVG Blob & Particles -->
+    <div class="morphic-visual">
+      <div class="morphic-glow"></div>
+      <svg id="blob" class="morphic-blob" viewBox="0 0 400 400" width="400" height="400" aria-hidden="true">
+        <defs>
+          <radialGradient id="morphic-gradient" cx="50%" cy="50%" r="60%" fx="50%" fy="50%">
+            <stop offset="0%" stop-color="#6FE7FF"/>
+            <stop offset="40%" stop-color="#18A8E6"/>
+            <stop offset="80%" stop-color="#0077C8"/>
+            <stop offset="100%" stop-color="#005DAF"/>
+          </radialGradient>
+          <filter id="morphic-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="22" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="morphic-inner-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feOffset dx="0" dy="6"/>
+            <feGaussianBlur stdDeviation="8" result="innerBlur"/>
+            <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="innerShadow"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.3 0"/>
+            <feBlend in2="SourceGraphic" mode="multiply"/>
+          </filter>
+        </defs>
+        <path id="blob-path-1" d="M200,90Q320,110,320,200Q320,320,200,340Q80,320,80,200Q80,110,200,90Z C260,60,340,160,300,260Q260,340,160,320Q60,300,100,180Q140,60,200,90Z" fill="url(#morphic-gradient)" filter="url(#morphic-glow) url(#morphic-inner-shadow)"/>
+        <path id="blob-path-2" d="M200,120Q340,180,260,260Q200,340,120,260Q60,180,200,120Z" fill="url(#morphic-gradient)" filter="url(#morphic-glow) url(#morphic-inner-shadow)" style="display:none;"/>
+        <path id="blob-path-3" d="M200,110Q330,170,270,250Q200,330,110,250Q70,170,200,110Z" fill="url(#morphic-gradient)" filter="url(#morphic-glow) url(#morphic-inner-shadow)" style="display:none;"/>
+      </svg>
+      <svg class="morphic-particles" width="400" height="400" aria-hidden="true">
+        <circle cx="80" cy="120" r="8" fill="#70D5FF"/>
+        <circle cx="320" cy="90" r="6" fill="#00A0E3"/>
+        <circle cx="340" cy="300" r="5" fill="#005DAF"/>
+        <circle cx="60" cy="280" r="7" fill="#00A0E3"/>
+        <circle cx="200" cy="370" r="4" fill="#70D5FF"/>
+      </svg>
+      <div class="morphic-confetti" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
