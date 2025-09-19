@@ -922,11 +922,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlapY =
     (stackedContainerHeight - stackedBlockHeight) / (blocks.length - 1); // should depends on screen sizes
 
+  const scrollSpeedCoeff = 7;
+
   const t2 = gsap.timeline({
     scrollTrigger: {
       trigger: '.stacked-section',
       start: 'top top',
-      end: '+=' + blocks.length * 2800, // довжина скролу = кількість блоків
+      end: '+=' + blocks.length * stackedBlockHeight * scrollSpeedCoeff, // довжина скролу = кількість блоків
       scrub: true,
       pin: true
     }

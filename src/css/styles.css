@@ -1961,16 +1961,22 @@ footer.footer {
 .stacked-section {
   height: 100dvh;
   position: relative;
+  overflow: hidden;
 }
 
 .stacked-inner {
-  padding: 120px 40px 40px;
+  padding: 100px 20px 20px;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  .stacked-inner {
+    padding: 120px 40px 40px;
+  }
 }
 
 .stacked-container {
   position: relative;
-  margin: 0 10px;
   height: 100%;
 }
 
@@ -1978,7 +1984,7 @@ footer.footer {
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%;
   aspect-ratio: 1 / 1;
   background: #fff;
   display: flex;
@@ -2003,5 +2009,3 @@ footer.footer {
     width: 400px;
   }
 }
-
-
