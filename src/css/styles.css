@@ -1946,3 +1946,79 @@ footer.footer {
 }
 
 
+
+/* ================================ */
+/* Sticky "Why smooth scroll" block */
+/* ================================ */
+.home_why__WN_ax {
+    position: relative;
+    background: #0b0b0b;
+    color: #fff;
+    padding: clamp(12vh, 16vh, 18vh) 0; /* more vertical breathing space */
+}
+
+.home_why__WN_ax .layout-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 48px); /* more horizontal padding */
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(24px, 5vw, 64px);
+    align-items: start;
+}
+
+.home_sticky__s8_O2 {
+    position: sticky;
+    top: 40%;
+    line-height: 0.95;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin: 0;
+}
+
+.home_sticky__s8_O2 .appear-title_line__xSB5T span {
+    display: inline-block;
+}
+
+.home_features__8F37d {
+    display: grid;
+    gap: 100px; /* exact spacing between blocks */
+}
+
+.home_feature__sub9k {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 24px; /* a bit more inner padding */
+}
+
+.home_title__Ddv9x.h4 {
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    margin: 0 0 8px 0;
+    color: var(--accent-color);
+    letter-spacing: .5px;
+}
+
+.home_feature__sub9k .p {
+    color: #eaeaea;
+    opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+    .home_why__WN_ax .layout-grid {
+        gap: 32px;
+    }
+}
+
+/* Mobile: title not sticky, single column */
+@media (max-width: 768px) {
+    .home_why__WN_ax { padding: 72px 0; } /* increase mobile padding */
+    .home_why__WN_ax .layout-grid {
+        grid-template-columns: 1fr;
+    }
+    .home_sticky__s8_O2 {
+        position: static;
+        transform: none;
+        margin-bottom: 16px;
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+}
+
+
